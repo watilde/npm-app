@@ -1,2 +1,2 @@
 # npm-app
-Run npm commands from your menubar.
+> npm as an app.
