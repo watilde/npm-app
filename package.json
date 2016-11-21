@@ -1,0 +1,31 @@
+{
+  "private": true,
+  "name": "npm-app",
+  "version": "1.0.0",
+  "description": "npm as an app",
+  "main": "app/main.js",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^1.4.7",
+    "electron-packager": "^8.3.0",
+    "standard": "^8.5.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . --out=dist --asar --overwrite --all"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/watilde/npm-app.git"
+  },
+  "keywords": [
+    "electron-app",
+    "npm"
+  ],
+  "author": "Daijiro Wachi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/watilde/npm-app/issues"
+  },
+  "homepage": "https://github.com/watilde/npm-app#readme"
+}
