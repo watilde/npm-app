@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Box, Text, Button } from 'react-desktop/macOs'
 
 const divStyle = {
-  display: 'flex'
+  display: 'flex',
+  justifyContent: 'space-between'
 }
 
 const buttonStyle = {
