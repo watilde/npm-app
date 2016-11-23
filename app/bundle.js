@@ -30,6 +30,10 @@ var buttonStyle = {
   marginLeft: '10px'
 };
 
+var inputStyle = {
+  display: 'none'
+};
+
 var _class = function (_Component) {
   _inherits(_class, _Component);
 
@@ -58,12 +62,15 @@ var _class = function (_Component) {
           _macOs.Button,
           { color: 'white', style: buttonStyle, marginTop: '13px', onClick: this.pickFile },
           'Choose file'
-        )
+        ),
+        _react2.default.createElement('input', { id: 'file', type: 'file', style: inputStyle })
       );
     }
   }, {
     key: 'pickFile',
-    value: function pickFile() {}
+    value: function pickFile() {
+      document.getElementById('file').click();
+    }
   }]);
 
   return _class;
@@ -170,8 +177,7 @@ var _class = function (_Component) {
         {
           background: 'black',
           padding: '10px',
-          horizontalAlignment: 'left',
-          verticalAlignment: 'top'
+          horizontalAlignment: 'left'
         },
         _react2.default.createElement(
           _macOs.Text,
