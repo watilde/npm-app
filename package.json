@@ -1,6 +1,7 @@
 {
   "private": true,
   "name": "npm-app",
+  "productName": "npm",
   "version": "1.0.0",
   "description": "npm as an app",
   "main": "app/main.js",
@@ -12,13 +13,20 @@
   },
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . --out=dist --asar --overwrite --all"
+    "build": "node scripts/build.js"
   },
+  "files": [
+    "app/main.js",
+    "app/index.html",
+    "app/style.css",
+    "app/icon.jpg"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/watilde/npm-app.git"
   },
   "keywords": [
+    "electron",
     "electron-app",
     "npm"
   ],
