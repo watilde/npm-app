@@ -5,7 +5,11 @@
   "version": "1.0.0",
   "description": "npm as an app",
   "main": "app/main.js",
-  "dependencies": {},
+  "dependencies": {
+    "react": "^15.4.1",
+    "react-desktop": "^0.2.14",
+    "react-dom": "^15.4.1"
+  },
   "devDependencies": {
     "electron": "^1.4.7",
     "electron-packager": "^8.3.0",
@@ -13,7 +17,7 @@
   },
   "scripts": {
     "start": "electron .",
-    "build": "node scripts/build.js"
+    "build": "electron-packager . --platform=darwin --arch=x64 --out=dist --icon=app/icon.icns"
   },
   "files": [
     "app/main.js",
