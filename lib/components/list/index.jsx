@@ -20,13 +20,18 @@ export default class extends Component {
       this.renderItem(1, 'run-script',
         <View
           background="black"
-          padding="20px"
-          horizontalAlignment="center"
-          verticalAlignment="center"
-          width="200px"
-          height="100px"
+          padding="10px"
+          horizontalAlignment="left"
+          verticalAlignment="top"
           >
-          <Text color="white">Hello World</Text>
+          <Text color="lime">
+          > intl@1.2.4 build /Users/daijiro/Development/Intl.js<br />
+          > npm run build:data && npm run build:lib && npm run build:dist<br />
+<br />
+<br />
+          > intl@1.2.4 build:data /Users/daijiro/Development/Intl.js<br />
+          > babel-node scripts/build-data<br />
+          </Text>
         </View>
       ),
       this.renderItem(2, 'outdated', <Text>Content 2</Text>)
