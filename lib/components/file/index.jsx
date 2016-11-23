@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { Box, Text, Button } from 'react-desktop/macOs'
 
 const divStyle = {
-  display: 'flex',
-};
+  display: 'flex'
+}
 
 const buttonStyle = {
   height: '38px',
@@ -15,7 +15,7 @@ const inputStyle = {
 }
 
 export default class extends Component {
-  render() {
+  render () {
     return (
       <div style={divStyle}>
         <Box label='Project root' padding='10px'>
@@ -28,7 +28,7 @@ export default class extends Component {
       </div>
     )
   }
-  pickFile() {
+  pickFile () {
     document.getElementById('file').click()
   }
 }

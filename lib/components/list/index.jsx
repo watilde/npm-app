@@ -1,43 +1,43 @@
 import React, { Component } from 'react'
-import { View, SegmentedControl, SegmentedControlItem, Text } from 'react-desktop/macOs';
+import { View, SegmentedControl, SegmentedControlItem, Text } from 'react-desktop/macOs'
 
 export default class extends Component {
-  constructor() {
-    super();
+  constructor () {
+    super()
     this.state = { selected: 1 }
   }
 
-  render() {
+  render () {
     return (
       <SegmentedControl box>
         {this.renderItems()}
       </SegmentedControl>
-    );
+    )
   }
 
-  renderItems() {
+  renderItems () {
     return [
       this.renderItem(1, 'run-script',
-        <View
-          background='black'
-          padding='10px'
-          horizontalAlignment='left'
-          >
-          <Text color='lime'>
+      <View
+        background='black'
+        padding='10px'
+        horizontalAlignment='left'
+        >
+        <Text color='lime'>
           > intl@1.2.4 build /Users/daijiro/Development/Intl.js<br />
           > npm run build:data && npm run build:lib && npm run build:dist<br />
-<br />
-<br />
+          <br />
+          <br />
           > intl@1.2.4 build:data /Users/daijiro/Development/Intl.js<br />
           > babel-node scripts/build-data<br />
-          </Text>
-        </View>
+        </Text>
+      </View>
       ),
       this.renderItem(2, 'outdated', <Text>Content 2</Text>)
-    ];
+    ]
   }
 
-  renderItem(key, title, content) {
+  renderItem (key, title, content) {
     return (
       <SegmentedControlItem
         key={key}
@@ -47,6 +47,6 @@ export default class extends Component {
       >
         {content}
       </SegmentedControlItem>
-    );
+    )
   }
 }
