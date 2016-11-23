@@ -19,12 +19,6 @@
     "start": "electron .",
     "build": "electron-packager . --platform=darwin --arch=x64 --out=dist --icon=app/icon.icns"
   },
-  "files": [
-    "app/main.js",
-    "app/index.html",
-    "app/style.css",
-    "app/icon.jpg"
-  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/watilde/npm-app.git"
