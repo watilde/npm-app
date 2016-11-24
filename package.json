@@ -22,6 +22,7 @@
   },
   "scripts": {
     "test": "standard",
+    "watch": "watchify lib/index.jsx -o app/bundle.js -t [ babelify --presets [ es2015 react ] ]",
     "babel": "browserify lib/index.jsx -o app/bundle.js -t [ babelify --presets [ es2015 react ] ]",
     "start": "electron .",
     "build": "electron-packager . --platform=darwin --overwrite --arch=x64 --out=dist --icon=app/icon.icns"

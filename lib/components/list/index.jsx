@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, SegmentedControl, SegmentedControlItem } from 'react-desktop/macOs'
+import { SegmentedControl, SegmentedControlItem } from 'react-desktop/macOs'
 import Outdated from './outdated.jsx'
 import RunScript from './run-script.jsx'
 
