@@ -8,7 +8,8 @@ const divStyle = {
 
 const buttonStyle = {
   height: '38px',
-  marginLeft: '10px'
+  marginLeft: '10px',
+  marginTop: '13px'
 }
 
 const inputStyle = {
@@ -22,7 +23,7 @@ export default class extends Component {
         <Box label='package.json' padding='10px'>
           <Text id='file__path'>/path/to/package.json</Text>
         </Box>
-        <Button color='white' style={buttonStyle} marginTop='13px' onClick={this.pickFile}>
+        <Button color='white' style={buttonStyle} onClick={this.pickFile}>
           Choose file
         </Button>
         <input id='file__pick' type='file' style={inputStyle} onChange={this.readFile} />
