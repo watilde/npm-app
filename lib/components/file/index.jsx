@@ -19,17 +19,22 @@ export default class extends Component {
   render () {
     return (
       <div style={divStyle}>
-        <Box label='Project root' padding='10px'>
-          <Text>/Users/daijiro/Development/Intl.js</Text>
+        <Box label='package.json' padding='10px'>
+          <Text id='file__path'>/path/to/package.json</Text>
         </Box>
         <Button color='white' style={buttonStyle} marginTop='13px' onClick={this.pickFile}>
           Choose file
         </Button>
-        <input id='file' type='file' style={inputStyle} />
+        <input id='file__pick' type='file' style={inputStyle} onChange={this.readFile} />
       </div>
     )
   }
   pickFile () {
-    document.getElementById('file').click()
+    document.getElementById('file__pick').click()
+  }
+  readFile () {
+    var file = document.getElementById('file__pick').files[0]
+    var path = file.path
+    console.log(path)
   }
 }
