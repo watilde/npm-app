@@ -16,26 +16,21 @@ const inputStyle = {
   display: 'none'
 }
 
-export default class extends Component {
-  render () {
-    return (
-      <div style={divStyle}>
-        <Box label='package.json' padding='10px'>
-          <Text id='file__path'>/path/to/package.json</Text>
-        </Box>
-        <Button color='white' style={buttonStyle} onClick={this.pickFile}>
-          Choose file
-        </Button>
-        <input id='file__pick' type='file' style={inputStyle} onChange={this.readFile} />
-      </div>
-    )
-  }
-  pickFile () {
-    document.getElementById('file__pick').click()
-  }
-  readFile () {
-    var file = document.getElementById('file__pick').files[0]
-    var path = file.path
-    console.log(path)
-  }
+function FileView (props) {
+
+  return (
+    <div style={divStyle}>
+      <Box label='package.json' padding='10px'>
+        <Text id='file__path'>
+          {props.file.path ? (props.file.path) : ('/path/to/package.json')}
+        </Text>
+      </Box>
+      <Button color='white' style={buttonStyle} onClick={props.onClickFile}>
+        Choose file
+      </Button>
+      <input id='file__pick' type='file' style={inputStyle} onChange={props.onChangeFile} />
+    </div>
+  )
 }
+
+export default FileView
