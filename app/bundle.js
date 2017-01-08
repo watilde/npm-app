@@ -65,8 +65,8 @@ function FileView(props) {
       { label: 'package.json', padding: '10px' },
       _react2.default.createElement(
         _macOs.Text,
-        { id: 'file__path' },
-        props.file.path ? props.file.path : '/path/to/package.json'
+        null,
+        props.file.valid ? props.file.path : '/path/to/package.json'
       )
     ),
     _react2.default.createElement(
@@ -427,6 +427,7 @@ function getStores() {
 }
 
 function getState() {
+  console.log(_fileStore2.default.getState());
   return {
     file: _fileStore2.default.getState(),
     onChangeFile: _fileAction2.default.changeFile,
@@ -493,6 +494,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var File = _immutable2.default.Record({
+  path: '',
+  valid: false
+});
+
 var FileStore = function (_ReduceStore) {
   _inherits(FileStore, _ReduceStore);
 
@@ -505,7 +511,7 @@ var FileStore = function (_ReduceStore) {
   _createClass(FileStore, [{
     key: 'getInitialState',
     value: function getInitialState() {
-      return _immutable2.default.OrderedMap();
+      return new File();
     }
   }, {
     key: 'reduce',
@@ -513,9 +519,10 @@ var FileStore = function (_ReduceStore) {
       switch (action.type) {
         case 'UPDATE_FILE':
           if (!action.file) return state;
-          return state.set(0, new _immutable2.default.Record({
-            file: action.file
-          }));
+          state = state.set('path', action.file.path);
+          state = state.set('valid', true);
+          window.state = state;
+          return state;
         default:
           return state;
       }

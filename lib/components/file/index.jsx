@@ -21,8 +21,8 @@ function FileView (props) {
   return (
     <div style={divStyle}>
       <Box label='package.json' padding='10px'>
-        <Text id='file__path'>
-          {props.file.path ? (props.file.path) : ('/path/to/package.json')}
+        <Text>
+          {props.file.valid ? (props.file.path) : ('/path/to/package.json')}
         </Text>
       </Box>
       <Button color='white' style={buttonStyle} onClick={props.onClickFile}>
