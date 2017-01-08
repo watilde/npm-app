@@ -1,3 +1,7 @@
 * {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
 }
+
+.Select-clear {
+  display: none !important;
+}
