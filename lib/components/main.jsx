@@ -8,7 +8,7 @@ function MainView (props) {
     <div>
       <File {...props} />
       <Hr />
-      <List {...props} />
+      {props.file.valid && <List {...props} />}
     </div>
   )
 }

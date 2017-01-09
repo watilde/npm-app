@@ -32,6 +32,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
@@ -39,6 +41,12 @@ var _react2 = _interopRequireDefault(_react);
 var _macOs = require('react-desktop/macOs');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var divStyle = {
   display: 'flex',
@@ -55,30 +63,44 @@ var inputStyle = {
   display: 'none'
 };
 
-function FileView(props) {
+var _class = function (_Component) {
+  _inherits(_class, _Component);
 
-  return _react2.default.createElement(
-    'div',
-    { style: divStyle },
-    _react2.default.createElement(
-      _macOs.Box,
-      { label: 'package.json', padding: '10px' },
-      _react2.default.createElement(
-        _macOs.Text,
-        null,
-        props.file.valid ? props.file.path : '/path/to/package.json'
-      )
-    ),
-    _react2.default.createElement(
-      _macOs.Button,
-      { color: 'white', style: buttonStyle, onClick: props.onClickFile },
-      'Choose file'
-    ),
-    _react2.default.createElement('input', { id: 'file__pick', type: 'file', style: inputStyle, onChange: props.onChangeFile })
-  );
-}
+  function _class() {
+    _classCallCheck(this, _class);
 
-exports.default = FileView;
+    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this));
+  }
+
+  _createClass(_class, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { style: divStyle },
+        _react2.default.createElement(
+          _macOs.Box,
+          { label: 'package.json', padding: '10px' },
+          _react2.default.createElement(
+            _macOs.Text,
+            null,
+            this.props.file.valid ? this.props.file.path : '/path/to/package.json'
+          )
+        ),
+        _react2.default.createElement(
+          _macOs.Button,
+          { color: 'white', style: buttonStyle, onClick: this.props.onClickFile },
+          'Choose file'
+        ),
+        _react2.default.createElement('input', { id: 'file__pick', type: 'file', style: inputStyle, onChange: this.props.onChangeFile })
+      );
+    }
+  }]);
+
+  return _class;
+}(_react.Component);
+
+exports.default = _class;
 
 },{"react":354,"react-desktop/macOs":115}],3:[function(require,module,exports){
 'use strict';
@@ -161,7 +183,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var _class = function (_Component) {
   _inherits(_class, _Component);
 
-  function _class() {
+  function _class(props) {
     _classCallCheck(this, _class);
 
     var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this));
@@ -182,7 +204,7 @@ var _class = function (_Component) {
   }, {
     key: 'renderItems',
     value: function renderItems() {
-      return [this.renderItem(1, 'run-script', _react2.default.createElement(_runScript2.default, null)), this.renderItem(2, 'outdated', _react2.default.createElement(_outdated2.default, null))];
+      return [this.renderItem(1, 'run-script', _react2.default.createElement(_runScript2.default, this.props)), this.renderItem(2, 'outdated', _react2.default.createElement(_outdated2.default, this.props))];
     }
   }, {
     key: 'renderItem',
@@ -284,8 +306,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var options = [{ value: 'one', label: 'npm run build' }, { value: 'two', label: 'Two' }];
-
 var selectStyle = {
   width: '100%'
 };
@@ -306,7 +326,10 @@ var _class = function (_Component) {
   function _class() {
     _classCallCheck(this, _class);
 
-    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).call(this));
+
+    _this.script = '';
+    return _this;
   }
 
   _createClass(_class, [{
@@ -319,9 +342,8 @@ var _class = function (_Component) {
           'div',
           { style: divStyle },
           _react2.default.createElement(_reactSelect2.default, {
-            name: 'form-field-name',
-            value: 'one',
-            options: options,
+            id: 'runScript__select',
+            options: this.getScripts(this.props.file.value.scripts),
             wrapperStyle: selectStyle
           }),
           _react2.default.createElement(
@@ -341,19 +363,27 @@ var _class = function (_Component) {
           _react2.default.createElement(
             _macOs.Text,
             { color: 'lime' },
-            '> intl@1.2.4 build /Users/daijiro/Development/Intl.js',
-            _react2.default.createElement('br', null),
-            '> npm run build:data && npm run build:lib && npm run build:dist',
-            _react2.default.createElement('br', null),
-            _react2.default.createElement('br', null),
-            _react2.default.createElement('br', null),
-            '> intl@1.2.4 build:data /Users/daijiro/Development/Intl.js',
-            _react2.default.createElement('br', null),
-            '> babel-node scripts/build-data',
-            _react2.default.createElement('br', null)
+            this.runScript(this.script)
           )
         )
       );
+    }
+  }, {
+    key: 'runScript',
+    value: function runScript(script) {
+      if (!script) return '$';
+      console.log(script);
+    }
+  }, {
+    key: 'getScripts',
+    value: function getScripts(scripts) {
+      if (scripts.length === 0) return [];
+      return Object.keys(scripts).map(function (key) {
+        return {
+          value: scripts[key],
+          label: key + ': ' + scripts[key]
+        };
+      });
     }
   }]);
 
@@ -393,7 +423,7 @@ function MainView(props) {
     null,
     _react2.default.createElement(_index2.default, props),
     _react2.default.createElement(_hr2.default, null),
-    _react2.default.createElement(_index4.default, props)
+    props.file.valid && _react2.default.createElement(_index4.default, props)
   );
 }
 
@@ -427,7 +457,6 @@ function getStores() {
 }
 
 function getState() {
-  console.log(_fileStore2.default.getState());
   return {
     file: _fileStore2.default.getState(),
     onChangeFile: _fileAction2.default.changeFile,
@@ -494,9 +523,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var fs = window.require('fs'); // hack to use fs module
+
+
 var File = _immutable2.default.Record({
   path: '',
-  valid: false
+  valid: false,
+  value: ''
 });
 
 var FileStore = function (_ReduceStore) {
@@ -521,7 +554,7 @@ var FileStore = function (_ReduceStore) {
           if (!action.file) return state;
           state = state.set('path', action.file.path);
           state = state.set('valid', true);
-          window.state = state;
+          state = state.set('value', JSON.parse(fs.readFileSync(action.file.path, 'utf8')));
           return state;
         default:
           return state;

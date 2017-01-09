@@ -2,11 +2,6 @@ import React, { Component } from 'react'
 import { View, Text, Button } from 'react-desktop/macOs'
 import Select from 'react-select'
 
-const options = [
-  { value: 'one', label: 'npm run build' },
-  { value: 'two', label: 'Two' }
-]
-
 const selectStyle = {
   width: '100%'
 }
@@ -22,14 +17,18 @@ const buttonStyle = {
 }
 
 export default class extends Component {
+  constructor () {
+    super()
+    this.script = ''
+  }
+
   render () {
     return (
       <div>
         <div style={divStyle}>
           <Select
-            name='form-field-name'
-            value='one'
-            options={options}
+            id='runScript__select'
+            options={this.getScripts(this.props.file.value.scripts)}
             wrapperStyle={selectStyle}
           />
           <Button color='white' style={buttonStyle}>
@@ -42,16 +41,24 @@ export default class extends Component {
           horizontalAlignment='left'
           marginTop='10px'
           >
-          <Text color='lime'>
-            > intl@1.2.4 build /Users/daijiro/Development/Intl.js<br />
-            > npm run build:data && npm run build:lib && npm run build:dist<br />
-            <br />
-            <br />
-            > intl@1.2.4 build:data /Users/daijiro/Development/Intl.js<br />
-            > babel-node scripts/build-data<br />
-          </Text>
+          <Text color='lime'>{this.runScript(this.script)}</Text>
         </View>
       </div>
     )
+  }
+
+  runScript (script) {
+    if (!script) return '$'
+    console.log(script)
+  }
+
+  getScripts (scripts) {
+    if (scripts.length === 0) return []
+    return Object.keys(scripts).map(function (key) {
+      return {
+        value: scripts[key],
+        label: key + ': ' + scripts[key]
+      }
+    })
   }
 }

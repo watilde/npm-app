@@ -4,7 +4,7 @@ import Outdated from './outdated.jsx'
 import RunScript from './run-script.jsx'
 
 export default class extends Component {
-  constructor () {
+  constructor (props) {
     super()
     this.state = { selected: 1 }
   }
@@ -19,8 +19,8 @@ export default class extends Component {
 
   renderItems () {
     return [
-      this.renderItem(1, 'run-script', <RunScript />),
-      this.renderItem(2, 'outdated', <Outdated />)
+      this.renderItem(1, 'run-script', <RunScript {...this.props} />),
+      this.renderItem(2, 'outdated', <Outdated {...this.props} />)
     ]
   }
 
