@@ -40,7 +40,7 @@ export default class extends Component {
           padding='10px'
           horizontalAlignment='left'
           marginTop='10px'
-          >
+        >
           <Text color='lime'>{this.runScript(this.script)}</Text>
         </View>
       </div>

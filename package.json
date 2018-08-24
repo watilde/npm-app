@@ -27,14 +27,12 @@
     "babel-preset-react": "^6.16.0",
     "babelify": "^8.0.0",
     "browserify": "^16.2.2",
-    "electron": "^2.0.6",
-    "electron-packager": "^12.1.0",
-    "flow-bin": "^0.78.0",
+    "electron": "^2.0.8",
+    "electron-packager": "^12.1.1",
     "standard": "^11.0.1"
   },
   "scripts": {
-    "test": "standard",
-    "flow": "flow",
+    "test": "standard --fix",
     "watch": "watchify lib/index.jsx -o app/bundle.js -t [ babelify --presets [ es2015 react ] ]",
     "babel": "browserify lib/index.jsx -o app/bundle.js -t [ babelify --presets [ es2015 react ] ]",
     "start": "electron .",

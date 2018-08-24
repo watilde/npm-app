@@ -1,1 +1,1 @@
-export { default as packageState } from "./package";
+export { default as packageState } from './package'

@@ -1,21 +1,20 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux'
 
 const packageReducer = (state, action) => {
   switch (action.type) {
-    case "LOAD_PACKAGE_PATH":
+    case 'LOAD_PACKAGE_PATH':
       return {
         ...state,
         path: action.path
-      };
-    case "LOAD_PACKAGE":
+      }
+    case 'LOAD_PACKAGE':
       return {
         ...state,
         path: action.package
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-
-export default packageReducer;
+export default packageReducer

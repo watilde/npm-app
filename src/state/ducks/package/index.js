@@ -1,5 +1,5 @@
-import packageReducer from "./reducers";
+import packageReducer from './reducers'
 
-export { default as packageSelectors } from "./selectors";
+export { default as packageSelectors } from './selectors'
 
-export default packageReducer;
+export default packageReducer
