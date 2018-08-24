@@ -4,7 +4,7 @@ import { createBrowserHistory } from 'history'
 import createSagaMiddleware from 'redux-saga'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import rootSaga from './sagas'
-import * as rootReducer from './ducks'
+import rootReducer from './ducks'
 import persistConfig from './config/persist'
 
 export const history = createBrowserHistory()

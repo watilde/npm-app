@@ -1,14 +1,14 @@
-const packageReducer = (state, action) => {
+const packageReducer = (state = {}, action) => {
   switch (action.type) {
     case 'LOAD_PACKAGE_PATH':
       return {
         ...state,
-        path: action.path
+        path: action.payload
       }
     case 'LOAD_PACKAGE':
       return {
         ...state,
-        path: action.package
+        data: action.payload
       }
     default:
       return state
