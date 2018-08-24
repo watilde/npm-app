@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import File from './file/index.jsx'
 import List from './list/index.jsx'
 import Hr from './hr.jsx'

@@ -17,10 +17,6 @@ const inputStyle = {
 }
 
 export default class extends Component {
-  constructor () {
-    super()
-  }
-
   render () {
     return (
       <div style={divStyle}>

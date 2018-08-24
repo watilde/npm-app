@@ -1,5 +1,3 @@
-import { combineReducers } from 'redux'
-
 const packageReducer = (state, action) => {
   switch (action.type) {
     case 'LOAD_PACKAGE_PATH':

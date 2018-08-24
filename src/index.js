@@ -8,12 +8,10 @@ import App from './views/App'
 const { store, persistor } = configureStore()
 
 render(
-  <AppContainer>
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <App history={history} />
-      </PersistGate>
-    </Provider>
-  </AppContainer>,
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <App history={history} />
+    </PersistGate>
+  </Provider>,
   document.getElementById('root')
 )
