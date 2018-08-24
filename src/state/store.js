@@ -1,16 +1,24 @@
-// @flow
-import { createStore, applyMiddleware, combineReducers } from "redux";
-import * as reducers from "./ducks"; // import all reducers from ducks/index.js
+import { applyMiddleware, createStore, compose } from "redux";
+import { createBrowserHistory } from 'history';
+import createSagaMiddleware from 'redux-saga';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
+import rootSaga from './sagas';
+import * as reducers from "./ducks";
+import persistConfig from './config/persist';
 
-/* eslint-disable no-underscore-dangle */
-export default function configureStore(initialState: any = {}) {
-  const rootReducer = combineReducers(reducers);
-  return createStore(
-    rootReducer,
-    initialState,
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-      window.__REDUX_DEVTOOLS_EXTENSION__(),
-    applyMiddleware()
+export const history = createBrowserHistory();
+export const configureStore = () {
+  const router = routerMiddleware(history);
+  const sagaMiddleware = createSagaMiddleware();
+  const middleware = [sagaMiddleware, thunk, router];
+  const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+  const store = createStore(
+    connectRouter(history)(persistedReducer),
+    compose(applyMiddleware(...middleware))
   );
+  const persistor = persistStore(store);
+  sagaMiddleware.run(rootSaga);
+
+  return { store, persistor };
 }
-/* eslint-enable */

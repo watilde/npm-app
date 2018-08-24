@@ -1,8 +1,6 @@
-// @flow
 import { combineReducers } from "redux";
-import type { Package, Path, Action } from "./types";
 
-const package = (state: Package, action: Action): Package => {
+const packageReducer = (state, action) => {
   switch (action.type) {
     case "LOAD_PACKAGE_PATH":
       return {
@@ -19,8 +17,5 @@ const package = (state: Package, action: Action): Package => {
   }
 };
 
-const todosReducer = combineReducers({
-  package
-});
 
-export default todosReducer;
+export default packageReducer;

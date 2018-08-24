@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 
 const style = {
   marginTop: '15px',
   marginBottom: '15px'
 }
 
-export default class extends Component {
+export default class extends PureComponent {
   render () {
     return (
       <hr style={style} />

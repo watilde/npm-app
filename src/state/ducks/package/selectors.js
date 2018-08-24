@@ -1,7 +1,4 @@
-// @flow
-import type { Package } from "./types";
-
-const getDependencies = (package: Package, filter: VisibilityFilter): Package => {
+const getDependencies = (package, filter): Package => {
   switch (filter) {
     case "SHOW_DEV_DEPS":
       return package.devDependencies;
